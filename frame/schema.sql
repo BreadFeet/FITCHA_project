@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS customer;
+
+CREATE TABLE customer(
+	id VARCHAR(10),        # id 10자리
+	pwd VARCHAR(15),       # pwd 15자리
+	name VARCHAR(10),
+	age INT,
+	height FLOAT,
+	weight INT
+);
+
+ALTER TABLE customer ADD PRIMARY KEY(id);
+ALTER TABLE customer MODIFY COLUMN pwd VARCHAR(15) NOT NULL;
+ALTER TABLE customer MODIFY COLUMN name VARCHAR(10) NOT NULL;
+ALTER TABLE customer MODIFY COLUMN age INT NOT NULL;
+ALTER TABLE customer MODIFY COLUMN height FLOAT NOT NULL;
+ALTER TABLE customer MODIFY COLUMN weight INT NOT NULL;
+
+INSERT INTO customer VALUES('id01', 'pwd01', '김영희', 31, 183.1, 63);
