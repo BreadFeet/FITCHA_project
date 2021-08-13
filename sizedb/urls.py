@@ -23,6 +23,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('login', views.login, name='login'),
     path('loginimpl', views.loginimpl, name='loginimpl'),
+    path('logout', views.logout, name='logout'),
     path('signup', views.signup, name='signup'),
     path('signupimpl', views.signupimpl, name='signupimpl'),
     path('recommend', views.recommend, name='recommend'),

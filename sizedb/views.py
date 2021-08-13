@@ -3,9 +3,14 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from frame.custdb import CustDB
 from frame.error import ErrorCode
+from frame.linkdb import LinkDB
+from teamanalysis.teamanlysis import Analysis
 
 
 def index(request):
+    # print(dir(request.session))
+    # print(request.session.keys())         # ['logininfo']
+    # print(request.session.values())       # [{'id':'id01', 'name':'김영희'}]
     return render(request, 'index.html')
 
 def login(request):
@@ -14,7 +19,6 @@ def login(request):
 def loginimpl(request):
     id = request.POST['id']
     pwd = request.POST['pwd']
-    print(request.session)
 
     try:
         cust = CustDB().selectOne(id)
@@ -30,6 +34,11 @@ def loginimpl(request):
         context = {'msg': ErrorCode.e02}
 
     return render(request, next, context)
+
+def logout(request):
+    if request.session['logininfo'] != None:
+        del request.session['logininfo']
+    return render(request, 'index.html')
 
 
 def signup(request):
@@ -55,7 +64,15 @@ def recommend(request):
     id = request.session['logininfo']['id']
     cust = CustDB().selectOne(id)
     age = cust.getAge()
-    weight = cust.getWt()
     height = cust.getHt()
+    weight = cust.getWt()
     # 분석화면이랑 연결해야 함
-    return render(request, 'recommend.html')
+    size = Analysis().sizeRecomm(age, height, weight)
+    # 해당 사이즈에 맞는 웹사이트 링크 가져오기
+    links = LinkDB().selectOne(size)
+    context = {
+        'size': size,
+        'mf': links[0],
+        'yoox': links[1]
+    }
+    return render(request, 'recommend.html', context)

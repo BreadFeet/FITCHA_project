@@ -3,4 +3,4 @@
 class Analysis:
     def sizeRecomm(self, age, height, weight):
         # 분석 내용
-        return 'M'
+        return 'XXS'  # 문자열로 반환해야 함
