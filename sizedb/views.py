@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 # Create your views here.
 from frame.custdb import CustDB
@@ -66,7 +66,7 @@ def recommend(request):
     age = cust.getAge()
     height = cust.getHt()
     weight = cust.getWt()
-    # 분석화면이랑 연결해야 함
+    # 분석내용이랑 연결해야 함
     size = Analysis().sizeRecomm(age, height, weight)
     # 해당 사이즈에 맞는 웹사이트 링크 가져오기
     links = LinkDB().selectOne(size)
