@@ -10,7 +10,7 @@ class CustDB(Db):
         cursor = conn.cursor()
         cursor.execute(Sql.custselone %id)
         c = cursor.fetchone()
-        cust = CustVO(c[0], c[1], c[2], c[3], c[4], c[5])
+        cust = CustVO(c[0], c[1], c[2], c[3], c[4], c[5], c[6])
         super().close(cursor, conn)
         return cust
 
@@ -21,22 +21,30 @@ class CustDB(Db):
         cursor.execute(Sql.custselall)
         cs = cursor.fetchall()
         for c in cs:
-            cust = CustVO(c[0], c[1], c[2], c[3], c[4], c[5])
+            cust = CustVO(c[0], c[1], c[2], c[3], c[4], c[5], c[6])
             custall.append(cust)
+        super().close(cursor, conn)
         return custall
 
-    def insert(self, id, pwd, name, age, height, weight):
+    def insert6(self, id, pwd, name, age, height, weight):
         conn = super().getConn()
         cursor = conn.cursor()
-        cursor.execute(Sql.custinsert %(id, pwd, name, age, height, weight))
+        cursor.execute(Sql.custinsert6, (id, pwd, name, age, height, weight))
         conn.commit()
         super().close(cursor, conn)
 
-    def update(self, id, pwd, name, age, height, weight):
+    def insert7(self, id, pwd, name, age, height, weight, size):
+        conn = super().getConn()
+        cursor = conn.cursor()
+        cursor.execute(Sql.custinsert7 %(id, pwd, name, age, height, weight, size))
+        conn.commit()
+        super().close(cursor, conn)
+
+    def update(self, id, pwd, name, age, height, weight, size):
         conn = super().getConn()
         cursor = conn.cursor()
         try:
-            cursor.execute(Sql.custupdate %(pwd, name, age, height, weight, id))
+            cursor.execute(Sql.custupdate %(pwd, name, age, height, weight, size, id))
             conn.commit()
         except Exception as err:
             conn.rollback()

@@ -2,20 +2,11 @@
 
 import pymysql
 
-# config = {
-#     'database': 'dsportfolio2$sizedb',
-#     'user': 'dsportfolio2',
-#     'password': 'mariadb1234',
-#     'host': 'dsportfolio2.mysql.pythonanywhere-services.com',
-#     'port': 3306,
-#     'charset': 'utf8',
-#     'use_unicode': True
-# }
-
+# 아래 본인 연결계정 입력하세요
 config = {
     'database': 'sizedb',
-    'user': 'project2',
-    'password': '2222',
+    'user': 'root',
+    'password': '0000',
     'host': '127.0.0.1',
     'port': 3306,
     'charset': 'utf8',

@@ -1,0 +1,144 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>App Landing Template </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+   </head>
+
+   <body>
+
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/logo.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparrent ">
+            <div class="main-header header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2 col-md-2">
+                            <div class="logo">
+                                <a href="{% url 'home' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10 col-md-10">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{% url 'home' %}"> Home</a></li>
+                                        <li class="active"><a href="{% url 'about' %}">About</a></li>
+                                        <li><a href="{% url 'recommend' %}">Find Your Size</a></li>
+                                        <li><a href="services.html">Explore Data</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    <!-- Head title starts -->
+    <div class="services-area">
+        <div class="container">
+            <!-- Section-tittle -->
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-tittle text-center mb-80">
+                        <h2>About Fitcha</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Head title ends -->
+
+    <!--Content starts-->
+    <div class="whole-wrap">
+        <div class="container box_1170">
+            <div class="section-top-border">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{% static 'assets/img/elements/coding.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-md-9 mt-sm-20">
+                        <p>  Fitcha is a project to provide a service to predict the size for ladies clothing.
+                            The project is a part of the class 'Intelligent Service Development with Big Data' delivered
+                            by Samsung Multicampus in Soeul, Korea - an affiliate of Samsung for education - and operated by Korean Ministry
+                            of Employment and Labor as a K-digital training scheme. This project mainly focuses on building a service
+                            from the scratch utilizing machine learning, database and web application skills.<br><br>
+
+                             The aim of this project is to help customers find their size for online shopping to minimize the return rate
+                            and maximize the satisfaction of purchases, especially for Korean people shopping often overseas.
+                             It recommends clothing size predicted by machine learning model which was built up on the data
+                            sourced from Kaggle. The data include age, height and weight information but the model uses only
+                            height and weight information relevant to size prediction. If you would like to check the
+                            data, the link can be found at the footer 'Quick Links'. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-top-border text-right">
+                <div class="row">
+                    <div class="col-md-9">
+                        <p class="text-right">Not only just provide size recommendation, it suggests shopping webpages which will direct a customer
+                        to the clothes of the recommended size so that it serves its original purpose to improve users' shopping experience.<br><br>
+
+                         The downside of the data is that the source is not explicitly mentioned. Plus, it is also not mentioned
+                        if it is a preferred size or an exact size of each person which makes a big difference in outcome. To improve
+                        the service, customers can provide the right size if the prediction was different from it. Then the model
+                        can learn from the right size, and the shopping pages directed from Fitcha show users clothes with the right size,
+                        not recommended size. </p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="{% static 'assets/img/elements/shop_online.png' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Content ends -->
+
+    <!-- Footer starts -->
+    {% include 'footer.html' %}
+    <!-- Footer ends -->
+

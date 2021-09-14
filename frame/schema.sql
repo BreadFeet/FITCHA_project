@@ -7,7 +7,8 @@ CREATE TABLE customer(
 	name VARCHAR(10),
 	age INT,
 	height FLOAT,
-	weight INT
+	weight INT,
+	right_size VARCHAR(5)
 );
 
 ALTER TABLE customer ADD PRIMARY KEY(id);
@@ -17,7 +18,8 @@ ALTER TABLE customer MODIFY COLUMN age INT NOT NULL;
 ALTER TABLE customer MODIFY COLUMN height FLOAT NOT NULL;
 ALTER TABLE customer MODIFY COLUMN weight INT NOT NULL;
 
-INSERT INTO customer VALUES('id01', 'pwd01', '김영희', 31, 183.1, 63);
+INSERT INTO customer VALUES('id01', 'pwd01', '김영희', 31, 183.1, 63, '');   # ''은 값이 있는 것으로 인식됨
+INSERT INTO customer VALUES('id02', 'pwd01', '이영주', 24, 167.9, 71, NULL);
 
 
 # 웹사이트 링크 테이블

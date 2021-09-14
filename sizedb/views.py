@@ -4,45 +4,21 @@ from django.shortcuts import render
 from frame.custdb import CustDB
 from frame.error import ErrorCode
 from frame.linkdb import LinkDB
-from teamanalysis.teamanlysis import Analysis
+from myanalysis.myanalysis import Analysis
 
 
-def index(request):
+def home(request):
     # print(dir(request.session))
     # print(request.session.keys())         # ['logininfo']
     # print(request.session.values())       # [{'id':'id01', 'name':'김영희'}]
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
-def login(request):
-    return render(request, 'login.html')
+def about(request):
+    return render(request, 'about.html')
 
-def loginimpl(request):
-    id = request.POST['id']
-    pwd = request.POST['pwd']
+def sign(request):
+    return render(request, 'signup_in.html')
 
-    try:
-        cust = CustDB().selectOne(id)
-        if pwd == cust.getPwd():
-            request.session['logininfo'] = {'id': cust.getId(), 'name': cust.getName()}
-            print(request.session['logininfo'])
-            next = 'index.html'
-            context = None
-        else:
-            raise Exception
-    except:
-        next = 'loginfail.html'
-        context = {'msg': ErrorCode.e02}
-
-    return render(request, next, context)
-
-def logout(request):
-    if request.session['logininfo'] != None:
-        del request.session['logininfo']
-    return render(request, 'index.html')
-
-
-def signup(request):
-    return render(request, 'signup.html')
 
 def signupimpl(request):
     id = request.POST['id']
@@ -51,28 +27,74 @@ def signupimpl(request):
     age = int(request.POST['age'])
     height = float(request.POST['ht'])
     weight = int(request.POST['wt'])
+    size = request.POST['size']
+
+    if size == '':
+        size = None
+
     try:
-        CustDB().insert(id, pwd, name, age, height, weight)
+        CustDB().insert7(id, pwd, name, age, height, weight, size)
         return render(request, 'signupsuccess.html')
     except Exception as err:
-        print(err)
+        print('에러:', err)
         context = {'msg': ErrorCode.e01}
         return render(request, 'signupfail.html', context)
 
 
+
+def signinimpl(request):
+    id = request.POST['id']
+    pwd = request.POST['pwd']
+
+    try:
+        cust = CustDB().selectOne(id)
+        if pwd == cust.getPwd():
+            request.session['signininfo'] = {'id': cust.getId(), 'name': cust.getName()}
+            print(request.session['signininfo'])
+            next = 'home.html'
+            context = None
+        else:
+            raise Exception
+    except:
+        next = 'signinfail.html'
+        context = {'msg': ErrorCode.e02}
+
+    return render(request, next, context)
+
+
+def signout(request):
+    if request.session['signininfo'] != None:
+        del request.session['signininfo']
+    return render(request, 'home.html')
+
+
+
 def recommend(request):
-    id = request.session['logininfo']['id']
+    id = request.session['signininfo']['id']
     cust = CustDB().selectOne(id)
-    age = cust.getAge()
     height = cust.getHt()
     weight = cust.getWt()
-    # 분석내용이랑 연결해야 함
-    size = Analysis().sizeRecomm(age, height, weight)
-    # 해당 사이즈에 맞는 웹사이트 링크 가져오기
-    links = LinkDB().selectOne(size)
-    context = {
-        'size': size,
-        'mf': links[0],
-        'yoox': links[1]
-    }
-    return render(request, 'recommend.html', context)
+    size = cust.getSize()   # Null인 경우 None으로 출력됨
+    print(id, height, weight, size)
+
+    # # 1. Right size가 있는 경우
+    # if size ==
+    # links = LinkDB().selectOne(size)
+    # context = {
+    #     'size': size,
+    #     'mf': links[0],
+    #     'yoox': links[1]
+    # }
+    #
+    # # 2. Right size가 없는 경우
+    # # 분석내용이랑 연결해야 함
+    # size = Analysis().sizeRecomm(height, weight, size)
+    # # 해당 사이즈에 맞는 웹사이트 링크 가져오기
+    # links = LinkDB().selectOne(size)
+    # context = {
+    #     'size': size,
+    #     'mf': links[0],
+    #     'yoox': links[1]
+    # }
+    # return render(request, 'findsize.html', context)
+
