@@ -2,7 +2,7 @@
 
 import pymysql
 
-# 아래 본인 연결계정 입력하세요
+# 로컬 계정 연결
 config = {
     'database': 'sizedb',
     'user': 'root',

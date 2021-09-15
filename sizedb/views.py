@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from frame.custdb import CustDB
@@ -67,6 +67,34 @@ def signout(request):
         del request.session['signininfo']
     return render(request, 'home.html')
 
+
+def myinfo(request):
+    id = request.session['signininfo']['id']
+    cust = CustDB().selectOne(id)
+    context = {'cust': cust}
+    return render(request, 'myinfo.html', context)
+
+def updateinfo(request):
+    id = request.POST['id']
+    pwd = request.POST['pwd']
+    name = request.POST['name']
+    age = int(request.POST['age'])
+    height = float(request.POST['ht'])
+    weight = int(request.POST['wt'])
+    size = request.POST['size']
+
+    if size == 'None':    # 실제 사이즈 정보가 입력되지 않은 경우
+        CustDB().update6(id, pwd, name, age, height, weight)
+        return redirect('home')
+    else:       # 실제 사이즈 정보가 입력된 경우
+        CustDB().update7(id, pwd, name, age, height, weight, size)
+        return redirect('home')
+
+
+def deleteinfo(request):
+    id = request.session['signininfo']['id']
+    CustDB().delete(id)
+    return redirect('home')
 
 
 def recommend(request):

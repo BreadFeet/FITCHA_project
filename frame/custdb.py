@@ -29,7 +29,7 @@ class CustDB(Db):
     def insert6(self, id, pwd, name, age, height, weight):
         conn = super().getConn()
         cursor = conn.cursor()
-        cursor.execute(Sql.custinsert6, (id, pwd, name, age, height, weight))
+        cursor.execute(Sql.custinsert6 %(id, pwd, name, age, height, weight))
         conn.commit()
         super().close(cursor, conn)
 
@@ -40,17 +40,19 @@ class CustDB(Db):
         conn.commit()
         super().close(cursor, conn)
 
-    def update(self, id, pwd, name, age, height, weight, size):
+    def update6(self, id, pwd, name, age, height, weight):
         conn = super().getConn()
         cursor = conn.cursor()
-        try:
-            cursor.execute(Sql.custupdate %(pwd, name, age, height, weight, size, id))
-            conn.commit()
-        except Exception as err:
-            conn.rollback()
-            print('에러:', err)
-        finally:
-            super().close(cursor, conn)
+        cursor.execute(Sql.custupdate6 %(pwd, name, age, height, weight, id))
+        conn.commit()
+        super().close(cursor, conn)
+
+    def update7(self, id, pwd, name, age, height, weight, size):
+        conn = super().getConn()
+        cursor = conn.cursor()
+        cursor.execute(Sql.custupdate7 %(pwd, name, age, height, weight, size, id))
+        conn.commit()
+        super().close(cursor, conn)
 
     def delete(self, id):
         conn = super().getConn()
