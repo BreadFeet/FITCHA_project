@@ -1,6 +1,8 @@
+from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from config import settings
 from frame.custdb import CustDB
 from frame.error import ErrorCode
 from frame.linkdb import LinkDB
@@ -27,13 +29,9 @@ def signupimpl(request):
     age = int(request.POST['age'])
     height = float(request.POST['ht'])
     weight = int(request.POST['wt'])
-    size = request.POST['size']
-
-    if size == '':
-        size = None
 
     try:
-        CustDB().insert7(id, pwd, name, age, height, weight, size)
+        CustDB().insert(id, pwd, name, age, height, weight)
         return render(request, 'signupsuccess.html')
     except Exception as err:
         print('에러:', err)
@@ -100,29 +98,53 @@ def deleteinfo(request):
 def recommend(request):
     id = request.session['signininfo']['id']
     cust = CustDB().selectOne(id)
+    age = cust.getAge()
     height = cust.getHt()
     weight = cust.getWt()
     size = cust.getSize()   # Null인 경우 None으로 출력됨
-    print(id, height, weight, size)
 
-    # # 1. Right size가 있는 경우
-    # if size ==
-    # links = LinkDB().selectOne(size)
-    # context = {
-    #     'size': size,
-    #     'mf': links[0],
-    #     'yoox': links[1]
-    # }
-    #
-    # # 2. Right size가 없는 경우
-    # # 분석내용이랑 연결해야 함
-    # size = Analysis().sizeRecomm(height, weight, size)
-    # # 해당 사이즈에 맞는 웹사이트 링크 가져오기
-    # links = LinkDB().selectOne(size)
-    # context = {
-    #     'size': size,
-    #     'mf': links[0],
-    #     'yoox': links[1]
-    # }
-    # return render(request, 'findsize.html', context)
+    # 1. Right size가 있는 경우
+    if size != None:
+        links = LinkDB().selectOne(size)
+        context = {
+            'size': size,
+            'msg': 'actual',
+            'mf': links[0],
+            'yoox': links[1]
+        }
 
+    # 2. Right size가 없는 경우
+    # 분석내용이랑 연결해야 함
+    else:
+        size = Analysis().sizeRecomm(age, height, weight)
+        # 해당 사이즈에 맞는 웹사이트 링크 가져오기
+        links = LinkDB().selectOne(size)
+        context = {
+            'size': size,
+            'msg': 'recommended',
+            'mf': links[0],
+            'yoox': links[1]
+        }
+    return render(request, 'findsize.html', context)
+
+def explore(request):
+    return render(request, 'explore.html')
+
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def contactimpl(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email_from = request.POST['email']
+        sender = '"' + name + '"' + ' <' + email_from + '>'
+        print(name, email_from, sender, type(sender))
+
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        email_to = settings.EMAIL_HOST_USER
+        email = EmailMessage(subject, message, to=[email_to], reply_to=[sender])
+        email.send()
+    return render(request, 'thanks.html')

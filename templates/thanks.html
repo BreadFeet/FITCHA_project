@@ -9,6 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                setTimeout(function() {
+                    window.location.href = '{% url 'home' %}'     // 페이지 리디렉션
+                }, 5000);
+            });
+        </script>
 
 		<!-- CSS here -->
             <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
@@ -41,7 +49,7 @@
 
     <header>
         <!-- Header Start -->
-       <div class="header-area header-transparrent ">
+        <div class="header-area header-transparrent ">
             <div class="main-header header-sticky">
                 <div class="container">
                     <div class="row align-items-center">
@@ -58,7 +66,7 @@
                                     <ul id="navigation">    
                                         <li><a href="{% url 'home' %}"> Home</a></li>
                                         <li><a href="{% url 'about' %}">About</a></li>
-                                        <li class="active"><a href="{% url 'recommend' %}">Find Your Size</a></li>
+                                        <li><a href="{% url 'recommend' %}">Find Your Size</a></li>
                                         <li><a href="{% url 'explore' %}">Explore Data</a></li>
                                         <li><a href="{% url 'contact' %}">Contact</a></li>
                                     </ul>
@@ -72,7 +80,7 @@
                     </div>
                 </div>
             </div>
-       </div>
+        </div>
         <!-- Header End -->
     </header>
 
@@ -85,7 +93,8 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-8">
 					<div class="section-tittle text-center mb-80">
-						<h2>Find Your Size</h2>
+						<h2>Thanks for sending your message!</h2>
+                        <h3>We will get back to you as soon as possible.</h3>
 					</div>
 				</div>
 			</div>
@@ -99,7 +108,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<blockquote class="generic-blockquote">
-                            Your {{msg}} size is <b>{{size}}</b>.
+							You will be redirected to the main page soon to enjoy our service.
 						</blockquote>
 					</div>
 				</div>
@@ -115,7 +124,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-xl-8">
                             <div class="section-tittle text-center">
-                                <h2>Keep Shopping <br> with the Size Information</h2>
+                                <h2>What Our Customers<br> Have to Say</h2>
                             </div>
                         </div>
                     </div>
@@ -124,23 +133,21 @@
                             <div class="customar-active dot-style d-flex dot-style">
                                 <div class="single-customer mb-100">
                                     <div class="what-img">
-                                        <a href="{{mf}}"><img src="{% static 'img/mf.png' %}" alt=""></a>
+                                        <img src="{% static 'assets/img/shape/man1.png' %}" alt="">
                                     </div>
                                     <div class="what-cap">
-                                        <h4><a href="{{mf}}">Matches Fashion</a></h4>
-                                        <p> Matches Fashion is the modern luxury shopping destination for the confident global fashion customer.
-                                            It aims to be the most personal luxury shopping experience in the world. </p>
+                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                        <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip ex ea commodo consequat duis aute irure dolor in represse.</p>
                                     </div>
                                 </div>
 
                                 <div class="single-customer mb-100">
                                     <div class="what-img">
-                                        <a href="{{yoox}}"><img src="{% static 'img/yoox.png' %}" alt=""></a>
+                                        <img src="{% static 'assets/img/shape/man2.png' %}" alt="">
                                     </div>
                                     <div class="what-cap">
-                                        <h4><a href="{{yoox}}">YOOX</a></h4>
-                                        <p> Established in 2000, YOOX is the world’s leading online store for fashion, design and art.
-                                            Its product includes the world’s most prestigious designers and exclusive collaborations with internationally-renowned artists. </p>
+                                        <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                        <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip ex ea commodo consequat duis aute irure dolor in represse.</p>
                                     </div>
                                 </div>
 
@@ -171,6 +178,60 @@
             </div>
         </div>
         <!-- Our Customer End -->
+        <!-- Available App  Start-->
+        <div class="available-app-area">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="app-caption">
+                            <div class="section-tittle section-tittle3">
+                                <h2>Our App Available For Any Device Download now</h2>
+                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fug.</p>
+                                <div class="app-btn">
+                                    <a href="#" class="app-btn1"><img src="{% static 'assets/img/shape/app_btn1.png' %}" alt=""></a>
+                                    <a href="#" class="app-btn2"><img src="{% static 'assets/img/shape/app_btn2.png' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="app-img">
+                            <img src="{% static 'assets/img/shape/available-app.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Shape -->
+            <div class="app-shape">
+                <img src="{% static 'assets/img/shape/app-shape-top.png' %}" alt="" class="app-shape-top heartbeat d-none d-lg-block">
+                <img src="{% static 'assets/img/shape/app-shape-left.png' %}" alt="" class="app-shape-left d-none d-xl-block">
+                <!-- <img src="{% static 'assets/img/shape/app-shape-right.png' %}" alt="" class="app-shape-right bounce-animate "> -->
+            </div>
+        </div>
+        <!-- Available App End-->
+        <!-- Say Something Start -->
+        <div class="say-something-aera pt-90 pb-90 fix">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="offset-xl-1 offset-lg-1 col-xl-5 col-lg-5">
+                        <div class="say-something-cap">
+                            <h2>Say Hello To The Collaboration Hub.</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3">
+                        <div class="say-btn">
+                            <a href="#" class="btn radius-btn">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- shape -->
+            <div class="say-shape">
+                <img src="{% static 'assets/img/shape/say-shape-left.png' %}" alt="" class="say-shape1 rotateme d-none d-xl-block">
+                <img src="{% static 'assets/img/shape/say-shape-right.png' %}" alt="" class="say-shape2 d-none d-lg-block">
+            </div>
+        </div>
+        <!-- Say Something End -->
 
     </main>
 

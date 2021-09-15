@@ -59,8 +59,8 @@
                                         <li><a href="{% url 'home' %}"> Home</a></li>
                                         <li><a href="{% url 'about' %}">About</a></li>
                                         <li><a href="{% url 'recommend' %}">Find Your Size</a></li>
-                                        <li><a href="services.html">Explore Data</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{% url 'explore' %}">Explore Data</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -140,16 +140,6 @@
                                     <div class="mt-10 col-lg-6"><p>* Mandatory field</p></div>
                                 </div>
                                 <br>
-                                <div class="row d-flex align-items-center">
-                                    <div class="mt-10 col-lg-6">
-                                        <input type="text" name="size" placeholder="Right Size"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'"
-                                        class="single-input">
-                                    </div>
-                                    <div class="mt-10 col-lg-6">
-                                        <p>Help us improve!</p>
-                                    </div>
-                                </div>
                                 <br>
                                 <input type="submit" value="SIGN UP" data-animation="fadeInLeft" data-delay="1.0s" class="btn radius-btn">
                             </form>

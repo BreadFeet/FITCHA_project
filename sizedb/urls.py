@@ -33,4 +33,9 @@ urlpatterns = [
     path('deleteinfo', views.deleteinfo, name='deleteinfo'),
 
     path('recommend', views.recommend, name='recommend'),
+
+    path('explore', views.explore, name='explore'),
+
+    path('contact', views.contact, name='contact'),
+    path('contactimpl', views.contactimpl, name='contactimpl'),
 ]

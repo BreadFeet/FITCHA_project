@@ -59,8 +59,8 @@
                                         <li><a href="{% url 'home' %}"> Home</a></li>
                                         <li><a href="{% url 'about' %}">About</a></li>
                                         <li><a href="{% url 'recommend' %}">Find Your Size</a></li>
-                                        <li><a href="services.html">Explore Data</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{% url 'explore' %}">Explore Data</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -191,20 +191,20 @@
                     <div class="col-xl-8 col-lg-4 col-md-col-md-7">
                         <div class="app-active owl-carousel">
                             <div class="single-cases-img">
-                                <img src="{% static 'assets/img/gallery/App1.png' %}" alt="">
+                                <img src="{% static 'assets/img/gallery/ml1.png' %}" alt="">
                             </div>
                             <div class="single-cases-img">
-                                <img src="{% static 'assets/img/gallery/App2.png' %}" alt="">
+                                <img src="{% static 'assets/img/gallery/ml2.png' %}" style="height:380px" alt="">
                             </div>
                             <div class="single-cases-img">
-                                <img src="{% static 'assets/img/gallery/App3.png' %}" alt="">
+                                <img src="{% static 'assets/img/gallery/ml3.png' %}" alt="">
                             </div>
-                            <div class="single-cases-img">
-                                <img src="{% static 'assets/img/gallery/App2.png' %}" alt="">
-                            </div>
-                            <div class="single-cases-img">
-                                <img src="{% static 'assets/img/gallery/App1.png' %}" alt="">
-                            </div>
+<!--                            <div class="single-cases-img">-->
+<!--                                <img src="{% static 'assets/img/gallery/App2.png' %}" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="single-cases-img">-->
+<!--                                <img src="{% static 'assets/img/gallery/App1.png' %}" alt="">-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
