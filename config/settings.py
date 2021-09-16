@@ -139,8 +139,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-UPLOAD_DIR = os.path.join(BASE_DIR, 'static/img')
-
 DATA_DIRS = os.path.join(BASE_DIR, 'data')
 
 # Default primary key field type

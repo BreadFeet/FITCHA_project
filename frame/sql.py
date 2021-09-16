@@ -6,4 +6,4 @@ class Sql:
     custupdate7 = "UPDATE customer SET pwd='%s', name='%s', age=%d, height=%f, weight=%d, right_size='%s' WHERE id='%s'"
     custdelete = "DELETE FROM customer WHERE id='%s'"
 
-    linkselone = "SELECT mf, yoox FROM link WHERE size='%s'"
+    linkselone = "SELECT mf, yoox, mt, net FROM link WHERE size='%s'"

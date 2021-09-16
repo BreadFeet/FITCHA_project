@@ -26,10 +26,10 @@ class CustDB(Db):
         super().close(cursor, conn)
         return custall
 
-    def insert6(self, id, pwd, name, age, height, weight):
+    def insert(self, id, pwd, name, age, height, weight):
         conn = super().getConn()
         cursor = conn.cursor()
-        cursor.execute(Sql.custinsert6 %(id, pwd, name, age, height, weight))
+        cursor.execute(Sql.custinsert %(id, pwd, name, age, height, weight))
         conn.commit()
         super().close(cursor, conn)
 

@@ -87,8 +87,12 @@
                                 <div class="hero__caption">
                                     <h1 data-animation="fadeInUp" data-delay=".6s">My Info</h1>
                                     <p data-animation="fadeInUp" data-delay=".8s">You can update or delete your information. <br><br>
-                                        Our recommendation on your size is <b>{{cust.getSize}}</b>. <br><br>
-                                    if you provide your actual size when it is different from our recommendation, we will connect you to shopping pages accordingly. </p>
+                                    {% if request.session.size == None %}
+                                        You haven't tried our size recommendation service!<br> Please click <b>FIND YOUR SIZE</b> on the menu. <br><br>
+                                    {% else %}
+                                        Our recommendation on your size is <b>{{request.session.size}}</b>. <br><br>
+                                    {% endif %}
+                                    If you provide your actual size when it is different from our recommendation, we will connect you to shopping pages accordingly. </p>
                                 </div>
                             </div>
 
@@ -163,8 +167,30 @@
                                     </div>
                                 </div>
                                 <br>
+
+                                <!-- For actual size confirmation alert -->
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('input[type="submit"]').click(function() {
+                                            actual_size = $('select').val();
+                                            if (confirm('Is your actual size ' + actual_size + ' ?')) {
+                                                $('form').submit();
+                                            } else {
+                                            return false;
+                                            }
+                                        });
+                                        $('#delete').click(function() {
+                                            if (confirm('Are you sure to delete your information? It will also delete your account.')) {
+                                                return true;
+                                            } else {
+                                            return false;
+                                            }
+                                        });
+                                    });
+                                </script>
                                 <input type="submit" value="UPDATE" data-animation="fadeInLeft" data-delay="1.0s" class="btn radius-btn">
-                                <a href="#" data-animation="fadeInLeft" data-delay="1.0s" class="btn radius-btn" onclick="confirm('Are you sure to delete your information?')"> DELETE </a>
+                                <a href="{% url 'deleteinfo' %}" data-animation="fadeInLeft" data-delay="1.0s" class="btn radius-btn" id="delete"> DELETE </a>
                             </form>
                         </div>
                         <!-- Sign Up End -->
@@ -199,12 +225,6 @@
                             <div class="single-cases-img">
                                 <img src="{% static 'assets/img/gallery/ml3.png' %}" alt="">
                             </div>
-<!--                            <div class="single-cases-img">-->
-<!--                                <img src="{% static 'assets/img/gallery/App2.png' %}" alt="">-->
-<!--                            </div>-->
-<!--                            <div class="single-cases-img">-->
-<!--                                <img src="{% static 'assets/img/gallery/App1.png' %}" alt="">-->
-<!--                            </div>-->
                         </div>
                     </div>
                 </div>

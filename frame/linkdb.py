@@ -7,12 +7,12 @@ class LinkDB(Db):
     def selectOne(self, size):
         conn = super().getConn()
         cursor = conn.cursor()
-        cursor.execute(Sql.linkselone %(size))
-        links = cursor.fetchone()    # link tuple
+        cursor.execute(Sql.linkselone % size)
+        links = cursor.fetchone()    # links in tuple
         super().close(cursor, conn)
         return links
 
 
 
 if __name__ == '__main__':
-    print(LinkDB().selectOne('M'))
+    print(LinkDB().selectOne('XXXL'))
