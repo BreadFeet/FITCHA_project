@@ -22,7 +22,7 @@ INSERT INTO customer VALUES('id01', 'pwd01', '김영희', 31, 183.1, 63, '');   
 INSERT INTO customer VALUES('id02', 'pwd01', '이영주', 24, 167.9, 71, NULL);
 
 
-# 웹사이트 링크 테이블
+# 웹사이트 링크 테이블----------------------------------------------------------------------------------------------------
 DROP TABLE IF EXISTS link;
 
 CREATE TABLE link(

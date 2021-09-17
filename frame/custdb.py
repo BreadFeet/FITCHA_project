@@ -33,17 +33,10 @@ class CustDB(Db):
         conn.commit()
         super().close(cursor, conn)
 
-    def update6(self, id, pwd, name, age, height, weight):
+    def update(self, id, pwd, name, age, height, weight, size):
         conn = super().getConn()
         cursor = conn.cursor()
-        cursor.execute(Sql.custupdate6 %(pwd, name, age, height, weight, id))
-        conn.commit()
-        super().close(cursor, conn)
-
-    def update7(self, id, pwd, name, age, height, weight, size):
-        conn = super().getConn()
-        cursor = conn.cursor()
-        cursor.execute(Sql.custupdate7 %(pwd, name, age, height, weight, size, id))
+        cursor.execute(Sql.custupdate %(pwd, name, age, height, weight, size, id))
         conn.commit()
         super().close(cursor, conn)
 

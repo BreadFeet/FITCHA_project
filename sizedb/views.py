@@ -85,11 +85,13 @@ def updateinfo(request):
     print(size)    # size 입력하지 않은 경우: None
 
     if size == None:    # 실제 사이즈 정보가 입력되지 않은 경우
-        CustDB().update6(id, pwd, name, age, height, weight)
-        return redirect('home')
-    else:       # 실제 사이즈 정보가 입력된 경우
-        CustDB().update7(id, pwd, name, age, height, weight, size)
-        return redirect('home')
+        size = 'NULL'
+    else:
+        size = "'{}'".format(size)
+    print(size)
+
+    CustDB().update(id, pwd, name, age, height, weight, size)
+    return redirect('home')
 
 
 def deleteinfo(request):
