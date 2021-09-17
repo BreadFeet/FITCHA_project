@@ -112,6 +112,7 @@ def recommend(request):
         height = cust.getHt()
         weight = cust.getWt()
         size = cust.getSize()   # Null인 경우 None으로 출력됨
+        print(size)
 
         # 1. Right size가 있는 경우
         if size != None:
@@ -129,7 +130,9 @@ def recommend(request):
         # 2. Right size가 없는 경우 - 분석내용이랑 연결해야 함
         else:
             size = Analysis().sizeRecomm(age, height, weight)
+            print(size)
             links = LinkDB().selectOne(size)
+            print(links)
             context = {
                 'msg': 'recommended',
                 'size': size,
