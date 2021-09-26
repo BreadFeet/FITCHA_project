@@ -13,7 +13,7 @@
         <script>
             $(document).ready(function() {
                 setTimeout(function() {
-                    window.location.href = '{% url 'home' %}'     // 페이지 리디렉션
+                    window.location.href = '{% url 'sign' %}#signin'     // 페이지 리디렉션
                 }, 5000);
             });
         </script>
@@ -93,7 +93,8 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-8">
 					<div class="section-tittle text-center mb-80">
-						<h2>Thanks for joining Fitcha! You are ready to enjoy our service.</h2>
+						<h2>Thanks for joining Fitcha!<h3>
+                        <h3>You are ready to enjoy our service.</h3>
 					</div>
 				</div>
 			</div>
@@ -107,8 +108,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<blockquote class="generic-blockquote">
-                            Your
-							You will be redirected to the sign in page to start with Fitcha.
+                            You will be redirected to the sign in page to start with Fitcha.
 						</blockquote>
 					</div>
 				</div>

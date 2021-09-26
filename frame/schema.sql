@@ -9,7 +9,7 @@ CREATE TABLE customer(
 	height FLOAT,
 	weight INT,
 	right_size VARCHAR(5)
-);
+) DEFAULT CHARSET=utf8;
 
 ALTER TABLE customer ADD PRIMARY KEY(id);
 ALTER TABLE customer MODIFY COLUMN pwd VARCHAR(15) NOT NULL;

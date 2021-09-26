@@ -31,6 +31,17 @@ def get_secret(setting, secrets=secrets):
 #     'use_unicode': True
 # }
 
+# 구름 계정 연결
+# config = {
+#     'database': 'sizedb',
+#     'user': 'project2',
+#     'password': get_secret("GR_PASSWORD"),
+#     'host': '54.93.174.140',
+#     'port': 52512,
+#     'charset': 'utf8',
+#     'use_unicode': True
+# }
+
 # 로컬 계정 연결
 config = {
     'database': 'sizedb',
